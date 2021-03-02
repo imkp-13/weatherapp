@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>headerlinks}}
+</head>
+
+<body>
+    {{>navbar}}
+    <!-- main header -->
+    <div class="container-fluid main-header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <div class="main-content">
+                    <form class="temp-form">
+                        <input type="text" id="cityName" placeholder="Enter Your City Name" autocomplete="off">
+                        <input type="submit" value="Search" id="submitBtn">
+                    </form>
+                </div>
+                <div class="temp-info">
+                    <div class="top-layer">
+                        <p id="day">Sunday</p>
+                        <p id="today-date">28 FEB</p>
+                    </div>
+                    <div class="main-layer">
+                        <p id="city-name">Welcome to Weather App</p>
+                        <div class="middle-layer data-hide">
+                            <p id="temp"><span id="temp-real-val">0</span> <sup>o</sup>C</p>
+                            <p id="temp-status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer section  -->
+    {{>footer}}
+    <script src="js/main.js"></script>
+    <script>
+        const getCurrentDay = () => {
+            let weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+
+            let currentTime = new Date();
+            days = weekday[currentTime.getDay()];
+
+            let day = document.getElementById('day');
+            day.innerText = days;
+
+            let currentDate = new Date();
+            dates = currentDate.toLocaleDateString();
+
+            let today_date = document.getElementById('today-date');
+            today_date.innerText = dates;
+            
+        }
+        getCurrentDay();
+    </script>
+</body>
+
+</html>
